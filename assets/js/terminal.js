@@ -508,14 +508,14 @@ const commands = {
   },
   leaderboard: {
     desc: "game high scores",
-    fn: (args) => {
+    fn: async (args) => {
       const game = args && args[0] ? args[0].toLowerCase() : null;
       if (game === 'space') {
-        return showLeaderboard('space-invaders', 'SPACE INVADERS');
+        return await showLeaderboard('space-invaders', 'SPACE INVADERS');
       } else if (game === 'snake') {
-        return showLeaderboard('snake', 'SNAKE');
+        return await showLeaderboard('snake', 'SNAKE');
       } else if (game === 'tetris') {
-        return showLeaderboard('tetris', 'TETRIS');
+        return await showLeaderboard('tetris', 'TETRIS');
       } else {
         let output = '\n  <span class="bold white">LEADERBOARDS</span>\n\n';
         output += '  <span class="cmd">leaderboard space</span>  space invaders scores\n';
@@ -527,7 +527,7 @@ const commands = {
   },
   scores: {
     desc: "alias for leaderboard",
-    fn: (args) => commands.leaderboard.fn(args),
+    fn: async (args) => commands.leaderboard.fn(args),
   },
 };
 
@@ -806,17 +806,47 @@ function renderGame(output) {
   output.innerHTML = html;
 }
 
-function saveScore(name, score, game = 'space-invaders') {
-  const key = `leaderboard-${game}`;
-  const scores = JSON.parse(localStorage.getItem(key) || '[]');
-  scores.push({ name, score, date: new Date().toISOString() });
-  scores.sort((a, b) => b.score - a.score);
-  localStorage.setItem(key, JSON.stringify(scores.slice(0, 50)));
+// Leaderboard API
+const LEADERBOARD_API = 'https://bentossell-leaderboard.bentossell.workers.dev';
+
+async function saveScore(name, score, game = 'space-invaders') {
+  try {
+    const res = await fetch(`${LEADERBOARD_API}/scores/${game}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, score }),
+    });
+    const data = await res.json();
+    if (data.rank) {
+      console.log(`Score saved! Rank: ${data.rank}`);
+    }
+    return data;
+  } catch (err) {
+    console.error('Failed to save score:', err);
+    // Fallback to localStorage
+    const key = `leaderboard-${game}`;
+    const scores = JSON.parse(localStorage.getItem(key) || '[]');
+    scores.push({ name, score, date: new Date().toISOString() });
+    scores.sort((a, b) => b.score - a.score);
+    localStorage.setItem(key, JSON.stringify(scores.slice(0, 50)));
+    return { ok: true, offline: true };
+  }
 }
 
-function showLeaderboard(game, title) {
-  const key = `leaderboard-${game}`;
-  const scores = JSON.parse(localStorage.getItem(key) || '[]');
+async function fetchLeaderboard(game) {
+  try {
+    const res = await fetch(`${LEADERBOARD_API}/scores/${game}`);
+    const data = await res.json();
+    return data.scores || [];
+  } catch (err) {
+    console.error('Failed to fetch leaderboard:', err);
+    // Fallback to localStorage
+    const key = `leaderboard-${game}`;
+    return JSON.parse(localStorage.getItem(key) || '[]');
+  }
+}
+
+function formatLeaderboard(scores, title) {
   if (scores.length === 0) {
     return `\n  <span class="muted">no ${title.toLowerCase()} scores yet.</span>\n`;
   }
@@ -826,6 +856,15 @@ function showLeaderboard(game, title) {
     output += `  <span class="accent">${medal.padStart(3)}</span> ${entry.name.padEnd(10)} <span class="success">${String(entry.score).padStart(5)}</span>\n`;
   });
   return output;
+}
+
+async function showLeaderboard(game, title) {
+  appendOutput('\n  <span class="muted">loading...</span>');
+  const scores = await fetchLeaderboard(game);
+  // Clear the loading message by removing last line
+  const output = document.getElementById('output');
+  output.innerHTML = output.innerHTML.replace(/<br>\s*<span class="muted">loading\.\.\.<\/span>\s*$/, '');
+  return formatLeaderboard(scores, title);
 }
 
 function endGame(savedContent, inputLine, keyHandler) {
