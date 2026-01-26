@@ -807,7 +807,7 @@ function renderGame(output) {
 }
 
 // Leaderboard API
-const LEADERBOARD_API = 'https://bentossell-leaderboard.bentossell.workers.dev';
+const LEADERBOARD_API = 'https://bentossell-leaderboard.ben-tossell.workers.dev';
 
 async function saveScore(name, score, game = 'space-invaders') {
   try {
