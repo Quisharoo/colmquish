@@ -304,23 +304,12 @@ a:hover {
     overflow-y: auto;
     padding: var(--space-md);
     background: var(--bg-secondary);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .terminal-body::-webkit-scrollbar {
-    width: 8px;
-}
-
-.terminal-body::-webkit-scrollbar-track {
-    background: var(--bg-tertiary);
-}
-
-.terminal-body::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
-    border-radius: 4px;
-}
-
-.terminal-body::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
+    display: none;
 }
 
 /* ===== OUTPUT ===== */
@@ -384,7 +373,7 @@ a:hover {
     line-height: 1.1;
     letter-spacing: -0.5px;
     white-space: pre;
-    overflow-x: auto;
+    overflow: hidden;
     display: block;
 }
 

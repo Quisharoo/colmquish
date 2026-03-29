@@ -1386,7 +1386,7 @@ async function boot() {
     " \\____| \\___/  _____| _|  _|     \\__\\_\\ \\___/  ___| _____/  _|  _| ",
   ].join("\n");
 
-  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.34rem, 0.82vw, 0.58rem); font-weight: 700; white-space: pre; overflow-x: auto;">${nameBanner}</pre>\n`;
+  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.34rem, 0.82vw, 0.58rem); font-weight: 700; white-space: pre; overflow: hidden;">${nameBanner}</pre>\n`;
   await sleep(100);
 
   output.innerHTML += `
