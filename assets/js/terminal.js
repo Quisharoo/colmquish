@@ -52,11 +52,6 @@ const commands = {
         '  <span class="cmd">tldr</span>          ultra-short bio',
         '  <span class="cmd">projects</span>      notable projects',
         "",
-        '  <span class="muted">--- content ---</span>',
-        '  <span class="cmd">tools</span>         tools i use daily',
-        '  <span class="cmd">models</span>        ai models i use',
-        '  <span class="cmd">search [term]</span> search site content',
-        "",
         '  <span class="muted">--- contact ---</span>',
         '  <span class="cmd">contact</span>       find me online',
         '  <span class="cmd">github</span>        open my GitHub profile',
@@ -329,8 +324,8 @@ const commands = {
   <span class="bold white">projects:</span>
 
   • <a href="https://incremnt.app/" target="_blank" rel="noopener">incremnt</a> <span class="muted">ai coach for training and health</span>
-  • <a href="https://www.scenr.ie/" target="_blank" rel="noopener">scenr</a> <span class="muted">simple social moments journal</span>
-  • <a href="https://www.npmjs.com/package/incremnt" target="_blank" rel="noopener">incremnt cli</a> <span class="muted">terminal companion for the app</span>
+    └ <a href="https://www.npmjs.com/package/incremnt" target="_blank" rel="noopener">incremnt cli</a> <span class="muted">terminal companion for the app</span>
+  • <a href="https://www.scenr.ie/" target="_blank" rel="noopener">scenr</a> <span class="muted">Discover what's happening near you</span>
 `;
     },
   },
@@ -344,13 +339,11 @@ const commands = {
       const searchable = [
         { cmd: 'whoami', keywords: ['colm', 'quish', 'engineering manager', 'dublin', 'ai', 'productivity', 'github'] },
         { cmd: 'projects', keywords: ['incremnt', 'scenr', 'npm', 'cli', 'ai coach', 'journal', 'terminal'] },
-        { cmd: 'tools', keywords: ['github', 'obsidian', 'chatgpt', 'codex', 'linear', 'granola', 'cursor', 'swift', 'go', 'typescript'] },
-        { cmd: 'models', keywords: ['chatgpt', 'claude', 'codex', 'ai', 'model'] },
         { cmd: 'contact', keywords: ['linkedin', 'github', 'social', 'profile'] },
       ];
       const matches = searchable.filter(s => s.keywords.some(k => k.includes(term) || term.includes(k)));
       if (matches.length === 0) {
-        return `\n  <span class="muted">no results for "${term}"</span>\n  try: projects, tools, contact, now\n`;
+        return `\n  <span class="muted">no results for "${term}"</span>\n  try: projects, contact, whoami\n`;
       }
       let output = `\n  <span class="bold white">results for "${term}":</span>\n\n`;
       matches.forEach(m => {
@@ -1387,14 +1380,10 @@ async function boot() {
   output.innerHTML += '\n';
 
   const nameBanner = [
-    "   ____ _     ___  __  __   __   _  _   _  ___ ",
-    "  / ___| |   / _ \\|  \\/  | / /  | \\| | | |/ __|",
-    " | |   | |__| | | | |\\/| |/ /   | .` | |_| |__ \\",
-    " | |___| '_ \\ |_| | |  | / /___ | |\\  |  _  |___/",
-    "  \\____|_.__/\\___/|_|  |_\\_____|_| \\_|_| |_|    ",
+    "COLM QUISH",
   ].join("\n");
 
-  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.34rem, 0.82vw, 0.58rem); font-weight: 700; white-space: pre; overflow-x: auto;">${nameBanner}</pre>\n`;
+  output.innerHTML += `<div class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: 0.08em;">${nameBanner}</div>\n`;
   await sleep(100);
 
   output.innerHTML += `

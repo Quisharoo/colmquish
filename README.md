@@ -9,8 +9,8 @@ engineering manager in Dublin.
 
 ## projects
 - [incremnt](https://incremnt.app/) - AI coach for training and health
-- [scenr](https://www.scenr.ie/) - Simple social moments journal
-- [incremnt cli](https://www.npmjs.com/package/incremnt) - Terminal companion for incremnt
+  - [incremnt cli](https://www.npmjs.com/package/incremnt) - Terminal companion for incremnt
+- [scenr](https://www.scenr.ie/) - Discover what's happening near you
 
 ## contact
 - [github](https://github.com/Quisharoo)
