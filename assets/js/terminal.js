@@ -1380,10 +1380,13 @@ async function boot() {
   output.innerHTML += '\n';
 
   const nameBanner = [
-    "COLM QUISH",
+    "   ___|   _ \\   |       \\  |       _ \\   |   | _ _|   ___|   |   | ",
+    "  |      |   |  |      |\\/ |      |   |  |   |   |  \\___ \\   |   | ",
+    "  |      |   |  |      |   |      |   |  |   |   |        |  ___ | ",
+    " \\____| \\___/  _____| _|  _|     \\__\\_\\ \\___/  ___| _____/  _|  _| ",
   ].join("\n");
 
-  output.innerHTML += `<div class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: 0.08em;">${nameBanner}</div>\n`;
+  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.34rem, 0.82vw, 0.58rem); font-weight: 700; white-space: pre; overflow-x: auto;">${nameBanner}</pre>\n`;
   await sleep(100);
 
   output.innerHTML += `
