@@ -48,26 +48,22 @@ const commands = {
         '  <span class="bold white">Available Commands</span>',
         "",
         '  <span class="muted">--- about ---</span>',
-        '  <span class="cmd">whoami</span>        who is ben tossell',
+        '  <span class="cmd">whoami</span>        who is colm quish',
         '  <span class="cmd">tldr</span>          ultra-short bio',
-        '  <span class="cmd">now</span>           what im doing',
-        '  <span class="cmd">prev</span>          previous work',
+        '  <span class="cmd">now</span>           what i am building',
         '  <span class="cmd">projects</span>      notable projects',
         "",
         '  <span class="muted">--- content ---</span>',
-        '  <span class="cmd">investments</span>   my investments',
         '  <span class="cmd">tools</span>         tools i use daily',
         '  <span class="cmd">models</span>        ai models i use',
-        '  <span class="cmd">blog</span>          read the blog',
         '  <span class="cmd">search [term]</span> search site content',
         "",
         '  <span class="muted">--- contact ---</span>',
         '  <span class="cmd">contact</span>       find me online',
-        '  <span class="cmd">lp</span>            interested in the fund',
-        '  <span class="cmd">pitch</span>         pitch your startup',
-        '  <span class="cmd">tweet</span>         tweet at me',
-        '  <span class="cmd">newsletter</span>    subscribe to ben\'s bites',
-        '  <span class="cmd">copy twitter</span>  copy handle to clipboard',
+        '  <span class="cmd">github</span>        open my GitHub profile',
+        '  <span class="cmd">linkedin</span>      open my LinkedIn profile',
+        '  <span class="cmd">copy github</span>   copy GitHub profile url',
+        '  <span class="cmd">copy linkedin</span> copy LinkedIn profile url',
         "",
         '  <span class="muted">--- terminal ---</span>',
         '  <span class="cmd">theme</span>         list/change themes',
@@ -81,20 +77,19 @@ const commands = {
     },
   },
   whoami: {
-    desc: "who is ben tossell",
+    desc: "who is colm quish",
     fn: () => {
       return `
-  <span class="bold white">Ben Tossell</span> <span class="muted">[2025]</span>
+  <span class="bold white">Colm Quish</span> <span class="muted">[2026]</span>
   ┌────────────────────────────────────────────────┐
-  │  head of devrel      <a href="https://factory.ai" target="_blank" rel="noopener">Factory</a>                   │
-  │  investor & writer   <a href="https://bensbites.com" target="_blank" rel="noopener">Ben's Bites</a>               │
-  │  twin dad                                      │
+  │  engineering manager                          │
+  │  practical AI + productivity tools           │
+  │  based in Dublin, Ireland                    │
   └────────────────────────────────────────────────┘
 
-  i'm technically not technical, but technical enough to not be
-  truly non-technical.
+  i build small, useful software and like keeping the stack simple.
 
-  technical, non-technical member of staff.
+  public github: <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">Quisharoo</a>
 
   type <span class="cmd">now</span> to see what i'm currently up to.
 `;
@@ -110,28 +105,11 @@ const commands = {
       return `
   <span class="bold white">now:</span>
 
-  • about to have baby number 3
-  • shipping on github <a href="https://github.com/bentossell" target="_blank" rel="noopener">/bentossell</a> & <a href="https://github.com/factory-ben" target="_blank" rel="noopener">/factory-ben</a>
-  • investing $100k into devtools & infra
-  • writing <a href="https://bensbites.com" target="_blank" rel="noopener">ben's bites</a> newsletter
+  • shipping small AI and productivity tools on GitHub
+  • exploring terminal-first workflows and lightweight automations
+  • based in Dublin, Ireland
 `;
     },
-  },
-  prev: {
-    desc: "previous work",
-    fn: () => {
-      return `
-  <span class="bold white">previously:</span>
-
-  • founder, makerpad - sold to zapier (in 18 months) [2019-2021]
-  • sequoia & a16z scout [2021-2025]
-  • product hunt [2015-2017]
-`;
-    },
-  },
-  history: {
-    desc: "alias for prev",
-    fn: () => commands.prev.fn(),
   },
   contact: {
     desc: "find me",
@@ -139,17 +117,28 @@ const commands = {
       return `
   <span class="bold white">contact:</span>
 
-  • <a href="https://x.com/bentossell" target="_blank" rel="noopener">twitter/x</a>
-  • <a href="https://linkedin.com/in/ben-tossell-70453537" target="_blank" rel="noopener">linkedin</a>
-  • <a href="https://github.com/bentossell" target="_blank" rel="noopener">github [personal]</a>
-  • <a href="https://github.com/factory-ben" target="_blank" rel="noopener">github [work]</a>
-  • <a href="https://discord.gg/zuudFXxg69" target="_blank" rel="noopener">droid discord</a>
+  • <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">github</a>
+  • <a href="https://www.linkedin.com/in/colmquish/" target="_blank" rel="noopener">linkedin</a>
 `;
     },
   },
   social: {
     desc: "alias for contact",
     fn: () => commands.contact.fn(),
+  },
+  github: {
+    desc: "open github profile",
+    fn: () => {
+      window.open('https://github.com/Quisharoo', '_blank');
+      return '\n  <span class="success">opening github...</span>\n';
+    },
+  },
+  linkedin: {
+    desc: "open linkedin profile",
+    fn: () => {
+      window.open('https://www.linkedin.com/in/colmquish/', '_blank');
+      return '\n  <span class="success">opening linkedin...</span>\n';
+    },
   },
   theme: {
     desc: "change theme",
@@ -182,51 +171,18 @@ const commands = {
       return "";
     },
   },
-  investments: {
-    desc: "investment portfolio",
-    fn: () => {
-      return `
-  <span class="bold white">Investments</span>
-
-  <span class="bold white">Fund Performance</span>
-  ┌──────────────────────┬──────────┬─────────┐
-  │ Fund                 │ MOIC     │ IRR     │
-  ├──────────────────────┼──────────┼─────────┤
-  │ Fund I ['20/'21]     │ 4x       │ 39%     │
-  │ Fund II ['23/'25]    │ 2x       │ 36%     │
-  ├──────────────────────┼──────────┼─────────┤
-  │ Fund III             │ <span class="muted">first close complete - open to new LPs</span>
-  └──────────────────────┴──────────┴─────────┘
-
-  <span class="bold white">Notable Companies</span>
-
-  • <a href="https://supabase.com" target="_blank" rel="noopener">supabase</a> <span class="muted">[seed]</span> → <span class="success">$5BN</span>
-  • <a href="https://gamma.app" target="_blank" rel="noopener">gamma</a> <span class="muted">[seed+ - a16z scout]</span> → <span class="success">$2.3BN</span> <span class="muted">[a16z led]</span>
-  • <a href="https://etched.com" target="_blank" rel="noopener">etched</a> <span class="muted">[seed+]</span> → <span class="success">$2.5BN</span>
-  • <a href="https://scribe.how" target="_blank" rel="noopener">scribe</a> <span class="muted">[seed]</span> → <span class="success">$1.3BN</span>
-  • <a href="https://factory.ai" target="_blank" rel="noopener">factory</a> <span class="muted">[seed]</span>
-  • <a href="https://sfcompute.com" target="_blank" rel="noopener">sf compute</a> <span class="muted">[pre-seed]</span>
-  • <a href="https://flutterflow.io" target="_blank" rel="noopener">flutterflow</a> <span class="muted">[seed]</span>
-  • <a href="https://wordware.ai" target="_blank" rel="noopener">wordware</a> <span class="muted">[pre-seed]</span>
-  • <a href="https://pika.art" target="_blank" rel="noopener">pika</a> <span class="muted">[series A]</span>
-  • <a href="https://crewai.com" target="_blank" rel="noopener">crewai</a> <span class="muted">[seed]</span>
-  • <a href="https://julius.ai" target="_blank" rel="noopener">julius</a> <span class="muted">[pre-seed]</span>
-
-  <span class="muted">interested? type</span> <span class="cmd">lp</span> <span class="muted">or</span> <span class="cmd">pitch</span>
-`;
-    },
-  },
   tools: {
     desc: "tools i use",
     fn: () => {
       return `
   <span class="bold white">tools:</span>
 
-  • <a href="https://factory.ai" target="_blank" rel="noopener">Factory</a> <span class="accent">[droid]</span>
   • <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+  • <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a>
+  • <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>
+  • <a href="https://www.cursor.com" target="_blank" rel="noopener">Cursor</a>
   • <a href="https://linear.app" target="_blank" rel="noopener">Linear</a>
-  • <a href="https://granola.ai" target="_blank" rel="noopener">Granola</a>
-  • <a href="https://ghostty.org" target="_blank" rel="noopener">Ghostty</a>
+  • <a href="https://www.granola.ai" target="_blank" rel="noopener">Granola</a>
 `;
     },
   },
@@ -236,17 +192,10 @@ const commands = {
       return `
   <span class="bold white">models:</span>
 
-  • opus 4.5 <span class="muted">[default model]</span>
-  • sonnet 4.5 <span class="muted">[usual daily driver]</span>
-  • gpt 5.1-codex <span class="muted">[bug fixes/code review]</span>
+  • chatgpt <span class="muted">[brainstorming and drafting]</span>
+  • claude <span class="muted">[long-form thinking]</span>
+  • codex <span class="muted">[code generation and review]</span>
 `;
-    },
-  },
-  blog: {
-    desc: "read the blog",
-    fn: () => {
-      window.location.href = "/blog/";
-      return '\n  <span class="muted">opening blog...</span>\n';
     },
   },
   music: {
@@ -293,7 +242,7 @@ const commands = {
   ls: {
     desc: "list files",
     fn: () =>
-      '\n  README.md  investments.md  tools.md\n\n  <span class="muted">try: whoami, now, investments, tools</span>\n',
+      '\n  README.md  tools.md\n\n  <span class="muted">try: whoami, now, projects, contact</span>\n',
   },
   cat: {
     desc: "cat file",
@@ -304,9 +253,6 @@ const commands = {
       const file = args[0].toLowerCase();
       if (file.includes("readme")) {
         return commands.whoami.fn();
-      }
-      if (file.includes("investment")) {
-        return commands.investments.fn();
       }
       if (file.includes("tool")) {
         return commands.tools.fn();
@@ -320,7 +266,7 @@ const commands = {
   },
   pwd: {
     desc: "print working directory",
-    fn: () => "\n  /home/ben\n",
+    fn: () => "\n  /home/colm\n",
   },
   echo: {
     desc: "echo text",
@@ -333,88 +279,60 @@ const commands = {
   neofetch: {
     desc: "system info",
     fn: () => `
-  <span class="accent">       _</span>          ben@tossell
+  <span class="accent">       _</span>          colm@quisharoo
   <span class="accent">      (_)</span>         -----------
   <span class="accent">   ___ _  ___</span>     OS: Human 1.0
   <span class="accent">  / __| |/ _ \\</span>    Host: Earth
   <span class="accent">  \\__ \\ |  __/</span>    Kernel: Coffee-powered
   <span class="accent">  |___/_|\\___|</span>    Uptime: ${getAge()} years
-                    Shell: bash
-                    Terminal: bentossell
+                    Shell: zsh
+                    Terminal: colmquish
 `,
   },
   claude: {
     desc: "ai assistant",
-    fn: () => '\n  try a better cli: <a href="https://factory.ai" target="_blank" rel="noopener">droid</a>\n',
+    fn: () => '\n  try a better cli: <a href="https://www.cursor.com" target="_blank" rel="noopener">cursor</a>\n',
   },
   codex: {
     desc: "ai assistant",
     fn: () => commands.claude.fn(),
   },
   lp: {
-    desc: "interested in the fund",
-    fn: () => {
-      window.open('mailto:ben.tossell@gmail.com?subject=Interested%20in%20the%20fund');
-      return '\n  <span class="success">opening email client...</span>\n';
-    },
+    desc: "alias for contact",
+    fn: () => commands.contact.fn(),
   },
   pitch: {
-    desc: "pitch your startup",
-    fn: () => {
-      return `
-  <span class="bold white">pitch guidelines:</span>
-
-  <span class="muted">i'm looking for:</span>
-  • dev tools & infra only
-  • cli-first ideas preferred
-
-  <span class="muted">email format:</span> [stage], [tagline]
-  <span class="muted">example:</span> "Pre-seed, GitHub Copilot for databases"
-
-  <a href="mailto:ben.tossell@gmail.com?subject=%5Bstage%5D%2C%20%5Btagline%5D" target="_blank" rel="noopener">→ click here to send pitch</a>
-
-  <span class="muted">or type</span> <span class="cmd">pitch send</span> <span class="muted">to open email</span>
-`;
-    },
+    desc: "alias for projects",
+    fn: () => commands.projects.fn(),
   },
   cal: {
     desc: "book a call",
-    fn: () => '\n  <span class="muted">sorry, calls are tough for me.</span>\n  try <span class="cmd">lp</span> or <span class="cmd">pitch</span> to reach out via email instead.\n',
+    fn: () => '\n  <span class="muted">send me a message on github or linkedin.</span>\n',
   },
   book: {
     desc: "alias for cal",
     fn: () => commands.cal.fn(),
   },
   tweet: {
-    desc: "tweet at me",
-    fn: () => {
-      window.open('https://twitter.com/intent/tweet?text=@bentossell%20');
-      return '\n  <span class="success">opening twitter...</span>\n';
-    },
+    desc: "alias for contact",
+    fn: () => commands.contact.fn(),
   },
   copy: {
-    desc: "copy email or twitter handle",
+    desc: "copy email or github",
     fn: async (args) => {
       if (!args || args.length === 0) {
-        return '\n  usage: <span class="cmd">copy email</span> or <span class="cmd">copy twitter</span>\n';
+        return '\n  usage: <span class="cmd">copy github</span> or <span class="cmd">copy linkedin</span>\n';
       }
       const what = args[0].toLowerCase();
-      if (what === 'email') {
-        await navigator.clipboard.writeText('ben.tossell@gmail.com');
-        return '\n  <span class="success">copied ben.tossell@gmail.com to clipboard</span>\n';
+      if (what === 'github') {
+        await navigator.clipboard.writeText('https://github.com/Quisharoo');
+        return '\n  <span class="success">copied github profile url to clipboard</span>\n';
       }
-      if (what === 'twitter' || what === 'x') {
-        await navigator.clipboard.writeText('@bentossell');
-        return '\n  <span class="success">copied @bentossell to clipboard</span>\n';
+      if (what === 'linkedin') {
+        await navigator.clipboard.writeText('https://www.linkedin.com/in/colmquish/');
+        return '\n  <span class="success">copied linkedin profile url to clipboard</span>\n';
       }
-      return '\n  <span class="error">unknown option: ' + what + '</span>\n  try: <span class="cmd">copy email</span> or <span class="cmd">copy twitter</span>\n';
-    },
-  },
-  newsletter: {
-    desc: "subscribe to ben's bites",
-    fn: () => {
-      window.open('https://bensbites.com', '_blank');
-      return '\n  <span class="success">opening ben\'s bites...</span>\n';
+      return '\n  <span class="error">unknown option: ' + what + '</span>\n  try: <span class="cmd">copy github</span> or <span class="cmd">copy linkedin</span>\n';
     },
   },
   projects: {
@@ -423,10 +341,14 @@ const commands = {
       return `
   <span class="bold white">projects:</span>
 
-  • <a href="https://archive.is/Ze3Ka" target="_blank" rel="noopener">makerpad</a> <span class="muted">['19-'21]</span> <span class="success">[acquired by zapier]</span>
-  • <a href="https://bensbites.com" target="_blank" rel="noopener">ben's bites</a> <span class="muted">['22-present]</span>
-  • <a href="https://github.com/bentossell/bentossell" target="_blank" rel="noopener">this website</a> <span class="muted">tui-style personal site</span> <span class="accent">[open source]</span>
-  • <a href="https://github.com/factory-ben/feed" target="_blank" rel="noopener">feed</a> <span class="muted">linear-style social tracker</span> <span class="accent">[open source]</span>
+  • <a href="https://incremnt.app/" target="_blank" rel="noopener">incremnt</a>
+  • <a href="https://www.scenr.ie/" target="_blank" rel="noopener">scenr</a>
+  • <a href="https://github.com/Quisharoo/chatgpt-obsidian-converter" target="_blank" rel="noopener">chatgpt-obsidian-converter</a> <span class="muted">chatgpt to markdown</span>
+  • <a href="https://github.com/Quisharoo/chatgpt-water-impact" target="_blank" rel="noopener">chatgpt-water-impact</a> <span class="muted">visualizes chatgpt water impact</span>
+  • <a href="https://github.com/Quisharoo/gh-pr-comments" target="_blank" rel="noopener">gh-pr-comments</a> <span class="muted">github cli extension</span>
+  • <a href="https://github.com/Quisharoo/obsidian-insight-companion" target="_blank" rel="noopener">obsidian-insight-companion</a> <span class="muted">summarizes note collections</span>
+  • <a href="https://github.com/Quisharoo/revolut-calendar" target="_blank" rel="noopener">revolut-calendar</a> <span class="muted">financial transactions in a calendar</span>
+  • <a href="https://github.com/Quisharoo/stash" target="_blank" rel="noopener">stash</a> <span class="muted">read-later app</span>
 `;
     },
   },
@@ -434,22 +356,20 @@ const commands = {
     desc: "search site content",
     fn: (args) => {
       if (!args || args.length === 0) {
-        return '\n  usage: <span class="cmd">search [term]</span>\n  example: <span class="cmd">search supabase</span>\n';
+        return '\n  usage: <span class="cmd">search [term]</span>\n  example: <span class="cmd">search github</span>\n';
       }
       const term = args.join(' ').toLowerCase();
       const searchable = [
-        { cmd: 'whoami', keywords: ['ben', 'tossell', 'factory', 'devrel', 'investor', 'twin', 'dad', 'technical'] },
-        { cmd: 'investments', keywords: ['supabase', 'gamma', 'etched', 'scribe', 'factory', 'sf compute', 'flutterflow', 'wordware', 'pika', 'crewai', 'julius', 'invest', 'portfolio'] },
-        { cmd: 'tools', keywords: ['factory', 'github', 'linear', 'granola', 'ghostty', 'droid'] },
-        { cmd: 'projects', keywords: ['makerpad', 'zapier', 'bens bites', 'bensbites', 'feed', 'website', 'open source'] },
-        { cmd: 'now', keywords: ['baby', 'shipping', 'github', 'devtools', 'infra', 'newsletter'] },
-        { cmd: 'prev', keywords: ['makerpad', 'sequoia', 'a16z', 'scout', 'product hunt'] },
-        { cmd: 'models', keywords: ['opus', 'sonnet', 'gpt', 'codex', 'claude', 'ai', 'model'] },
-        { cmd: 'contact', keywords: ['twitter', 'linkedin', 'github', 'discord', 'email', 'social'] },
+        { cmd: 'whoami', keywords: ['colm', 'quish', 'engineering manager', 'dublin', 'ai', 'productivity', 'github'] },
+        { cmd: 'projects', keywords: ['incremnt', 'scenr', 'chatgpt', 'obsidian', 'github', 'calendar', 'stash', 'pr-comments', 'revolut'] },
+        { cmd: 'tools', keywords: ['github', 'obsidian', 'chatgpt', 'codex', 'linear', 'granola', 'cursor', 'swift', 'go', 'typescript'] },
+        { cmd: 'now', keywords: ['shipping', 'github', 'ai', 'productivity', 'dublin', 'terminal'] },
+        { cmd: 'models', keywords: ['chatgpt', 'claude', 'codex', 'ai', 'model'] },
+        { cmd: 'contact', keywords: ['linkedin', 'github', 'social', 'profile'] },
       ];
       const matches = searchable.filter(s => s.keywords.some(k => k.includes(term) || term.includes(k)));
       if (matches.length === 0) {
-        return `\n  <span class="muted">no results for "${term}"</span>\n  try: investments, tools, projects, contact\n`;
+        return `\n  <span class="muted">no results for "${term}"</span>\n  try: projects, tools, contact, now\n`;
       }
       let output = `\n  <span class="bold white">results for "${term}":</span>\n\n`;
       matches.forEach(m => {
@@ -462,8 +382,8 @@ const commands = {
     desc: "ultra-short bio",
     fn: () => {
       return `
-  <span class="bold white">ben tossell</span> — head of devrel @ factory. investor in dev tools.
-  prev: founded makerpad (acq. zapier), sequoia/a16z scout.
+  <span class="bold white">colm quish</span> — engineering manager building practical ai and productivity tools.
+  based in dublin, ireland. public github: <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">quisharoo</a>.
 `;
     },
   },
@@ -806,44 +726,18 @@ function renderGame(output) {
   output.innerHTML = html;
 }
 
-// Leaderboard API
-const LEADERBOARD_API = 'https://bentossell-leaderboard.ben-tossell.workers.dev';
-
 async function saveScore(name, score, game = 'space-invaders') {
-  try {
-    const res = await fetch(`${LEADERBOARD_API}/scores/${game}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, score }),
-    });
-    const data = await res.json();
-    if (data.rank) {
-      console.log(`Score saved! Rank: ${data.rank}`);
-    }
-    return data;
-  } catch (err) {
-    console.error('Failed to save score:', err);
-    // Fallback to localStorage
-    const key = `leaderboard-${game}`;
-    const scores = JSON.parse(localStorage.getItem(key) || '[]');
-    scores.push({ name, score, date: new Date().toISOString() });
-    scores.sort((a, b) => b.score - a.score);
-    localStorage.setItem(key, JSON.stringify(scores.slice(0, 50)));
-    return { ok: true, offline: true };
-  }
+  const key = `leaderboard-${game}`;
+  const scores = JSON.parse(localStorage.getItem(key) || '[]');
+  scores.push({ name, score, date: new Date().toISOString() });
+  scores.sort((a, b) => b.score - a.score);
+  localStorage.setItem(key, JSON.stringify(scores.slice(0, 50)));
+  return { ok: true, offline: true };
 }
 
 async function fetchLeaderboard(game) {
-  try {
-    const res = await fetch(`${LEADERBOARD_API}/scores/${game}`);
-    const data = await res.json();
-    return data.scores || [];
-  } catch (err) {
-    console.error('Failed to fetch leaderboard:', err);
-    // Fallback to localStorage
-    const key = `leaderboard-${game}`;
-    return JSON.parse(localStorage.getItem(key) || '[]');
-  }
+  const key = `leaderboard-${game}`;
+  return JSON.parse(localStorage.getItem(key) || '[]');
 }
 
 function formatLeaderboard(scores, title) {
@@ -1477,7 +1371,7 @@ function getCompletions(partial) {
 
 async function fetchLatestPR() {
   try {
-    const res = await fetch('https://api.github.com/repos/bentossell/bentossell/pulls?state=closed&sort=updated&direction=desc&per_page=1');
+    const res = await fetch('https://api.github.com/repos/Quisharoo/colmquish/pulls?state=closed&sort=updated&direction=desc&per_page=1');
     const prs = await res.json();
     const merged = prs.find(pr => pr.merged_at);
     if (merged) {
@@ -1492,7 +1386,7 @@ async function boot() {
   const lines = [
     "initializing terminal...",
     "loading modules... done",
-    "connecting to ben.tossell... connected",
+    "connecting to colm quish... connected",
   ];
 
   for (const line of lines) {
@@ -1521,7 +1415,7 @@ async function boot() {
   await sleep(100);
 
   output.innerHTML += `
-  builder. investor. dad.
+  engineering manager. builder of practical ai and productivity tools.
   welcome to my cli. type <span class="cmd">help</span> to see commands.
 
 `;

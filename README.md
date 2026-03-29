@@ -1,24 +1,23 @@
-# ben tossell
+# Colm Quish
 
-builder. investor. dad.
+engineering manager in Dublin.
 
 ## whoami
-- head of devrel @ [factory](https://factory.ai)
-- investor & writer @ [ben's bites](https://bensbites.com)
-- twin dad
+- based in Dublin, Ireland
+- public GitHub: [Quisharoo](https://github.com/Quisharoo)
+- LinkedIn: [colmquish](https://www.linkedin.com/in/colmquish/)
 
-## investments
-supabase, gamma, etched, scribe, factory, sf compute, flutterflow, wordware, pika, crewai, julius
-
-## tools
-factory, github, linear, granola, ghostty
-
-## prev
-- founder, makerpad → sold to zapier
-- sequoia & a16z scout
-- product hunt
+## projects
+- [incremnt](https://incremnt.app/)
+- [scenr](https://www.scenr.ie/)
+- [chatgpt-obsidian-converter](https://github.com/Quisharoo/chatgpt-obsidian-converter)
+- [chatgpt-water-impact](https://github.com/Quisharoo/chatgpt-water-impact)
+- [gh-pr-comments](https://github.com/Quisharoo/gh-pr-comments)
+- [obsidian-insight-companion](https://github.com/Quisharoo/obsidian-insight-companion)
+- [revolut-calendar](https://github.com/Quisharoo/revolut-calendar)
+- [office-check-In](https://github.com/Quisharoo/office-check-In)
+- [stash](https://github.com/Quisharoo/stash)
 
 ## contact
-- [twitter/x](https://x.com/bentossell)
-- [github](https://github.com/bentossell)
-- [linkedin](https://linkedin.com/in/ben-tossell-70453537)
+- [github](https://github.com/Quisharoo)
+- [linkedin](https://www.linkedin.com/in/colmquish/)

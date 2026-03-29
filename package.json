@@ -1,19 +1,16 @@
 {
-  "name": "ben-tossell-website",
+  "name": "colmquish-website",
   "version": "1.0.0",
-  "description": "Ben Tossell's personal website with blog functionality",
+  "description": "Colm Quish's personal website",
   "main": "index.html",
   "scripts": {
-    "new-post": "node create-post.js",
     "serve": "python3 -m http.server 8000"
   },
   "keywords": [
-    "blog",
     "personal-website",
-    "markdown",
     "static-site"
   ],
-  "author": "Ben Tossell",
+  "author": "Colm Quish",
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {}

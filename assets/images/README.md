@@ -1,6 +1,6 @@
 # Images Directory
 
-This directory contains all the image assets for Ben Tossell's personal website.
+This directory contains all the image assets for Colm Quish's personal website.
 
 ## Required Files
 
@@ -25,7 +25,7 @@ You may also want to add:
 - Any additional background images
 - Profile photos
 - Logo variations
-- Icons for projects or investments
+- Icons for projects or site assets
 
 ## File Formats
 

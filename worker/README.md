@@ -29,10 +29,10 @@ Games: `space-invaders`, `snake`, `tetris`
 
 ```bash
 # Get scores
-curl https://bentossell-leaderboard.bentossell.workers.dev/scores/snake
+curl https://leaderboard.colmquish.workers.dev/scores/snake
 
 # Submit score
-curl -X POST https://bentossell-leaderboard.bentossell.workers.dev/scores/snake \
+curl -X POST https://leaderboard.colmquish.workers.dev/scores/snake \
   -H "Content-Type: application/json" \
-  -d '{"name":"Ben","score":420}'
+  -d '{"name":"Colm","score":420}'
 ```
