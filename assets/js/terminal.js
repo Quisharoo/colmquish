@@ -112,7 +112,7 @@ const commands = {
   resume: {
     desc: "open resume",
     fn: () => {
-      const url = 'https://docs.google.com/document/d/1CljGnkMnmBsSQuz6YOe7CZp9tSZttzx4_ImF_gikJXQ/view';
+      const url = 'https://drive.google.com/file/d/10Aj6ds90gf1hgA5x2f_NQKaCJljUv_Yt/view?usp=sharing';
       window.open(url, '_blank');
       return `\n  <span class="success">opening resume...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
