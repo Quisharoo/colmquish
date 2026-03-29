@@ -50,7 +50,6 @@ const commands = {
         '  <span class="muted">--- about ---</span>',
         '  <span class="cmd">whoami</span>        who is colm quish',
         '  <span class="cmd">tldr</span>          ultra-short bio',
-        '  <span class="cmd">now</span>           what i am building',
         '  <span class="cmd">projects</span>      notable projects',
         "",
         '  <span class="muted">--- content ---</span>',
@@ -91,25 +90,13 @@ const commands = {
 
   public github: <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">Quisharoo</a>
 
-  type <span class="cmd">now</span> to see what i'm currently up to.
+  type <span class="cmd">projects</span> to see what i'm building.
 `;
     },
   },
   about: {
     desc: "alias for whoami",
     fn: () => commands.whoami.fn(),
-  },
-  now: {
-    desc: "current activities",
-    fn: () => {
-      return `
-  <span class="bold white">now:</span>
-
-  • shipping small AI and productivity tools on GitHub
-  • exploring terminal-first workflows and lightweight automations
-  • based in Dublin, Ireland
-`;
-    },
   },
   contact: {
     desc: "find me",
@@ -341,14 +328,9 @@ const commands = {
       return `
   <span class="bold white">projects:</span>
 
-  • <a href="https://incremnt.app/" target="_blank" rel="noopener">incremnt</a>
-  • <a href="https://www.scenr.ie/" target="_blank" rel="noopener">scenr</a>
-  • <a href="https://github.com/Quisharoo/chatgpt-obsidian-converter" target="_blank" rel="noopener">chatgpt-obsidian-converter</a> <span class="muted">chatgpt to markdown</span>
-  • <a href="https://github.com/Quisharoo/chatgpt-water-impact" target="_blank" rel="noopener">chatgpt-water-impact</a> <span class="muted">visualizes chatgpt water impact</span>
-  • <a href="https://github.com/Quisharoo/gh-pr-comments" target="_blank" rel="noopener">gh-pr-comments</a> <span class="muted">github cli extension</span>
-  • <a href="https://github.com/Quisharoo/obsidian-insight-companion" target="_blank" rel="noopener">obsidian-insight-companion</a> <span class="muted">summarizes note collections</span>
-  • <a href="https://github.com/Quisharoo/revolut-calendar" target="_blank" rel="noopener">revolut-calendar</a> <span class="muted">financial transactions in a calendar</span>
-  • <a href="https://github.com/Quisharoo/stash" target="_blank" rel="noopener">stash</a> <span class="muted">read-later app</span>
+  • <a href="https://incremnt.app/" target="_blank" rel="noopener">incremnt</a> <span class="muted">ai coach for training and health</span>
+  • <a href="https://www.scenr.ie/" target="_blank" rel="noopener">scenr</a> <span class="muted">simple social moments journal</span>
+  • <a href="https://www.npmjs.com/package/incremnt" target="_blank" rel="noopener">incremnt cli</a> <span class="muted">terminal companion for the app</span>
 `;
     },
   },
@@ -361,9 +343,8 @@ const commands = {
       const term = args.join(' ').toLowerCase();
       const searchable = [
         { cmd: 'whoami', keywords: ['colm', 'quish', 'engineering manager', 'dublin', 'ai', 'productivity', 'github'] },
-        { cmd: 'projects', keywords: ['incremnt', 'scenr', 'chatgpt', 'obsidian', 'github', 'calendar', 'stash', 'pr-comments', 'revolut'] },
+        { cmd: 'projects', keywords: ['incremnt', 'scenr', 'npm', 'cli', 'ai coach', 'journal', 'terminal'] },
         { cmd: 'tools', keywords: ['github', 'obsidian', 'chatgpt', 'codex', 'linear', 'granola', 'cursor', 'swift', 'go', 'typescript'] },
-        { cmd: 'now', keywords: ['shipping', 'github', 'ai', 'productivity', 'dublin', 'terminal'] },
         { cmd: 'models', keywords: ['chatgpt', 'claude', 'codex', 'ai', 'model'] },
         { cmd: 'contact', keywords: ['linkedin', 'github', 'social', 'profile'] },
       ];
@@ -1406,20 +1387,14 @@ async function boot() {
   output.innerHTML += '\n';
 
   const nameBanner = [
-    "                                                                                             ",
-    "   _|_|_|    _|_|    _|        _|      _|        _|_|      _|    _|  _|_|_|                 ",
-    " _|        _|    _|  _|        _|_|  _|_|      _|    _|    _|    _|    _|                   ",
-    " _|        _|    _|  _|        _|  _|  _|      _|  _|_|    _|    _|    _|                   ",
-    " _|        _|    _|  _|        _|      _|      _|    _|    _|    _|    _|                   ",
-    "   _|_|_|    _|_|    _|_|_|_|  _|      _|        _|_|  _|    _|_|    _|_|_|                 ",
-    "   _|_|_|  _|    _|                                                                              ",
-    " _|        _|    _|                                                                              ",
-    "   _|_|    _|_|_|_|                                                                              ",
-    "       _|  _|    _|                                                                              ",
-    " _|_|_|    _|    _|                                                                              ",
+    "   ____ _     ___  __  __   __   _  _   _  ___ ",
+    "  / ___| |   / _ \\|  \\/  | / /  | \\| | | |/ __|",
+    " | |   | |__| | | | |\\/| |/ /   | .` | |_| |__ \\",
+    " | |___| '_ \\ |_| | |  | / /___ | |\\  |  _  |___/",
+    "  \\____|_.__/\\___/|_|  |_\\_____|_| \\_|_| |_|    ",
   ].join("\n");
 
-  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.42rem, 0.95vw, 0.68rem); font-weight: 700; white-space: pre;">${nameBanner}</pre>\n`;
+  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.34rem, 0.82vw, 0.58rem); font-weight: 700; white-space: pre; overflow-x: auto;">${nameBanner}</pre>\n`;
   await sleep(100);
 
   output.innerHTML += `
