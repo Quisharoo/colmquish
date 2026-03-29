@@ -10,11 +10,11 @@ Please place the following files in this directory:
    - Recommended dimensions: 1200 x 630 pixels
    - This image appears when the site is shared on social media platforms
 
-2. **favicon.png** - The website favicon
-   - Recommended dimensions: 32 x 32 pixels
-   - This appears in browser tabs
+2. **favicon.svg** - The website favicon
+   - Vector icon used in browser tabs
+   - Scales cleanly at small sizes
 
-3. **apple-touch-icon.png** - Icon for iOS devices
+3. **apple-touch-icon.png** - Optional icon for iOS devices
    - Recommended dimensions: 180 x 180 pixels
    - This appears when the site is added to the home screen on iOS devices
 
@@ -29,7 +29,8 @@ You may also want to add:
 
 ## File Formats
 
-- Use **PNG** for icons and graphics that require transparency
+- Use **SVG** for simple logos and icons that need to stay crisp at any size
+- Use **PNG** for icons and graphics that require transparency or broad legacy support
 - Use **JPG/JPEG** for photographs and complex images
 - Use **SVG** for vector graphics that need to scale (like logos)
 
