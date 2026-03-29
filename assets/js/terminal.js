@@ -1405,12 +1405,7 @@ async function boot() {
   }
   output.innerHTML += '\n';
 
-  output.innerHTML += `<span class="accent ascii-art">  CCC   OOO   LL      MM   MM    QQQ    U   U   III   SSSS   H   H
-  C     O   O  LL      MMM MMM   Q   Q   U   U    I    S      H   H
-  C     O   O  LL      MM M MM   Q   Q   U   U    I     SSS   HHHHH
-  C     O   O  LL      MM   MM   Q  Q    U   U    I        S  H   H
-  CCC   OOO   LLLLLL   MM   MM    QQQ     UUU    III   SSSS   H   H</span>
-  <span class="bold white">COLM QUISH</span>
+  output.innerHTML += `<div style="margin: 0.5rem 0 1rem; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1; letter-spacing: 0.14em; font-weight: 700;" class="accent">COLM QUISH</div>
 `;
   await sleep(100);
 
