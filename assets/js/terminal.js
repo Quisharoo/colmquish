@@ -51,6 +51,7 @@ const commands = {
         '  <span class="cmd">whoami</span>        who is colm quish',
         '  <span class="cmd">tldr</span>          ultra-short bio',
         '  <span class="cmd">projects</span>      notable projects',
+        '  <span class="cmd">resume</span>        open my resume',
         "",
         '  <span class="muted">--- contact ---</span>',
         '  <span class="cmd">contact</span>       find me online',
@@ -107,6 +108,13 @@ const commands = {
   social: {
     desc: "alias for contact",
     fn: () => commands.contact.fn(),
+  },
+  resume: {
+    desc: "open resume",
+    fn: () => {
+      window.open('https://docs.google.com/document/d/1CljGnkMnmBsSQuz6YOe7CZp9tSZttzx4_ImF_gikJXQ/view', '_blank');
+      return '\n  <span class="success">opening resume...</span>\n';
+    },
   },
   github: {
     desc: "open github profile",
