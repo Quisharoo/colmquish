@@ -1410,6 +1410,7 @@ async function boot() {
   C     O   O  LL      MM M MM   Q   Q   U   U    I     SSS   HHHHH
   C     O   O  LL      MM   MM   Q  Q    U   U    I        S  H   H
   CCC   OOO   LLLLLL   MM   MM    QQQ     UUU    III   SSSS   H   H</span>
+  <span class="bold white">COLM QUISH</span>
 `;
   await sleep(100);
 
