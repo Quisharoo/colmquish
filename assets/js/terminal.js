@@ -1405,8 +1405,15 @@ async function boot() {
   }
   output.innerHTML += '\n';
 
-  output.innerHTML += `<div style="margin: 0.5rem 0 1rem; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1; letter-spacing: 0.14em; font-weight: 700;" class="accent">COLM QUISH</div>
-`;
+  const nameBanner = [
+    "   ____ ___  _     __  __    ___  _   _ ___ ____  _   _ ",
+    "  / ___/ _ \\| |   |  \\/  |  / _ \\| | | |_ _/ ___|| | | |",
+    " | |  | | | | |   | |\\/| | | | | | | | || |\\___ \\| |_| |",
+    " | |__| |_| | |___| |  | | | |_| | |_| || | ___) |  _  |",
+    "  \\____\\___/|_____|_|  |_|  \\__\\_\\\\___/|___|____/|_| |_|",
+  ].join("\n");
+
+  output.innerHTML += `<pre class="accent" style="margin: 0.5rem 0 1rem; line-height: 1; font-size: clamp(0.55rem, 1.15vw, 0.82rem); font-weight: 700; white-space: pre;">${nameBanner}</pre>\n`;
   await sleep(100);
 
   output.innerHTML += `
