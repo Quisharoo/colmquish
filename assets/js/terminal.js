@@ -112,22 +112,25 @@ const commands = {
   resume: {
     desc: "open resume",
     fn: () => {
-      window.open('https://docs.google.com/document/d/1CljGnkMnmBsSQuz6YOe7CZp9tSZttzx4_ImF_gikJXQ/view', '_blank');
-      return '\n  <span class="success">opening resume...</span>\n';
+      const url = 'https://docs.google.com/document/d/1CljGnkMnmBsSQuz6YOe7CZp9tSZttzx4_ImF_gikJXQ/view';
+      window.open(url, '_blank');
+      return `\n  <span class="success">opening resume...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
   github: {
     desc: "open github profile",
     fn: () => {
-      window.open('https://github.com/Quisharoo', '_blank');
-      return '\n  <span class="success">opening github...</span>\n';
+      const url = 'https://github.com/Quisharoo';
+      window.open(url, '_blank');
+      return `\n  <span class="success">opening github...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
   linkedin: {
     desc: "open linkedin profile",
     fn: () => {
-      window.open('https://www.linkedin.com/in/colmquish/', '_blank');
-      return '\n  <span class="success">opening linkedin...</span>\n';
+      const url = 'https://www.linkedin.com/in/colmquish/';
+      window.open(url, '_blank');
+      return `\n  <span class="success">opening linkedin...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
   theme: {
