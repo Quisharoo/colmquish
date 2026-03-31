@@ -10,7 +10,7 @@ const state = {
 const vibes = [
   "building things",
   "shipping fast",
-  "caffeinated ☕",
+  "caffeinated",
   "in the zone",
   "thinking...",
   "exploring ideas",
@@ -147,9 +147,26 @@ const commands = {
   },
   strava: {
     desc: "open strava profile",
-    fn: () => {
-      openExternal(links.strava);
-      return `\n  <span class="success">opening strava...</span>\n  <a href="${links.strava}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
+    fn: async () => {
+      let recentOutput = '';
+      try {
+        const res = await fetch('assets/data/strava.json');
+        const data = await res.json();
+        if (data.activities && data.activities.length > 0) {
+          recentOutput = '\n  <span class="muted">recent activities:</span>\n';
+          data.activities.forEach(a => {
+            const dist = a.distance_km;
+            const mins = Math.floor(a.moving_time / 60);
+            const secs = a.moving_time % 60;
+            const time = `${mins}:${secs.toString().padStart(2, '0')}`;
+            const pace = a.pace ? `${a.pace.toFixed(2)}/km` : '--';
+            recentOutput += `\n  • <a href="${a.url}" target="_blank" rel="noopener">${a.name}</a>\n`;
+            recentOutput += `    <span class="muted">${a.date} · ${dist}km · ${time} · ${pace}</span>\n`;
+          });
+          recentOutput += '\n';
+        }
+      } catch (e) {}
+      return `${recentOutput}  → <a href="${links.strava}" target="_blank" rel="noopener">view all on strava</a>\n`;
     },
   },
   theme: {
@@ -254,7 +271,7 @@ const commands = {
   ls: {
     desc: "list files",
     fn: () =>
-      '\n  README.md  tools.md\n\n  <span class="muted">try: whoami, now, projects, contact</span>\n',
+      '\n  README.md  tools.md\n\n  <span class="muted">try: whoami, projects, contact</span>\n',
   },
   cat: {
     desc: "cat file",
