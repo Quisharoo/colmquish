@@ -89,14 +89,13 @@ const commands = {
   ┌────────────────────────────────────────────────┐
   │  engineering manager                          │
   │  practical AI + productivity tools           │
-  │  I like to run long distances when I can     │
   │  based in Dublin, Ireland                    │
   └────────────────────────────────────────────────┘
 
   i build small, useful software and like keeping the stack simple.
   i like to run long distances when i can.
 
-  public github: <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">Quisharoo</a>
+  public github: <a href="${links.github}" target="_blank" rel="noopener">Quisharoo</a>
 
   type <span class="cmd">projects</span> to see what i'm building.
 `;
@@ -126,7 +125,7 @@ const commands = {
     desc: "open resume",
     fn: () => {
       const url = links.resume;
-      window.open(url, '_blank');
+      openExternal(url);
       return `\n  <span class="success">opening resume...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
@@ -134,7 +133,7 @@ const commands = {
     desc: "open github profile",
     fn: () => {
       const url = links.github;
-      window.open(url, '_blank');
+      openExternal(url);
       return `\n  <span class="success">opening github...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
@@ -142,14 +141,14 @@ const commands = {
     desc: "open linkedin profile",
     fn: () => {
       const url = links.linkedin;
-      window.open(url, '_blank');
+      openExternal(url);
       return `\n  <span class="success">opening linkedin...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
   strava: {
     desc: "open strava profile",
     fn: () => {
-      window.open(links.strava, "_blank");
+      openExternal(links.strava);
       return `\n  <span class="success">opening strava...</span>\n  <a href="${links.strava}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
@@ -331,7 +330,7 @@ const commands = {
     fn: () => commands.contact.fn(),
   },
   copy: {
-    desc: "copy email or github",
+    desc: "copy github, linkedin, or strava link",
     fn: async (args) => {
       if (!args || args.length === 0) {
         return '\n  usage: <span class="cmd">copy github</span>, <span class="cmd">copy linkedin</span>, or <span class="cmd">copy strava</span>\n';
@@ -1303,6 +1302,10 @@ function setTheme(themeName) {
   document.body.className = `theme-${themeName}`;
   state.theme = themeName;
   localStorage.setItem("terminal-theme", themeName);
+}
+
+function openExternal(url) {
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 function cycleTheme() {
