@@ -15,3 +15,4 @@ engineering manager in Dublin.
 ## contact
 - [github](https://github.com/Quisharoo)
 - [linkedin](https://www.linkedin.com/in/colmquish/)
+- [strava](https://www.strava.com/athletes/52439165)
