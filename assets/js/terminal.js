@@ -38,6 +38,14 @@ const vibes = [
 // Available themes
 const themes = ["midnight", "phosphor", "amber", "matrix", "contrast"];
 
+const links = {
+  github: "https://github.com/Quisharoo",
+  linkedin: "https://www.linkedin.com/in/colmquish/",
+  strava: "https://www.strava.com/athletes/52439165",
+  resume:
+    "https://drive.google.com/file/d/10Aj6ds90gf1hgA5x2f_NQKaCJljUv_Yt/view?usp=sharing",
+};
+
 // Commands registry
 const commands = {
   help: {
@@ -57,8 +65,10 @@ const commands = {
         '  <span class="cmd">contact</span>       find me online',
         '  <span class="cmd">github</span>        open my GitHub profile',
         '  <span class="cmd">linkedin</span>      open my LinkedIn profile',
+        '  <span class="cmd">strava</span>        open my Strava profile',
         '  <span class="cmd">copy github</span>   copy GitHub profile url',
         '  <span class="cmd">copy linkedin</span> copy LinkedIn profile url',
+        '  <span class="cmd">copy strava</span>   copy Strava profile url',
         "",
         '  <span class="muted">--- terminal ---</span>',
         '  <span class="cmd">theme</span>         list/change themes',
@@ -79,10 +89,12 @@ const commands = {
   ┌────────────────────────────────────────────────┐
   │  engineering manager                          │
   │  practical AI + productivity tools           │
+  │  I like to run long distances when I can     │
   │  based in Dublin, Ireland                    │
   └────────────────────────────────────────────────┘
 
   i build small, useful software and like keeping the stack simple.
+  i like to run long distances when i can.
 
   public github: <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">Quisharoo</a>
 
@@ -100,8 +112,9 @@ const commands = {
       return `
   <span class="bold white">contact:</span>
 
-  • <a href="https://github.com/Quisharoo" target="_blank" rel="noopener">github</a>
-  • <a href="https://www.linkedin.com/in/colmquish/" target="_blank" rel="noopener">linkedin</a>
+  • <a href="${links.github}" target="_blank" rel="noopener">github</a>
+  • <a href="${links.linkedin}" target="_blank" rel="noopener">linkedin</a>
+  • <a href="${links.strava}" target="_blank" rel="noopener">strava</a>
 `;
     },
   },
@@ -112,7 +125,7 @@ const commands = {
   resume: {
     desc: "open resume",
     fn: () => {
-      const url = 'https://drive.google.com/file/d/10Aj6ds90gf1hgA5x2f_NQKaCJljUv_Yt/view?usp=sharing';
+      const url = links.resume;
       window.open(url, '_blank');
       return `\n  <span class="success">opening resume...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
@@ -120,7 +133,7 @@ const commands = {
   github: {
     desc: "open github profile",
     fn: () => {
-      const url = 'https://github.com/Quisharoo';
+      const url = links.github;
       window.open(url, '_blank');
       return `\n  <span class="success">opening github...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
@@ -128,9 +141,16 @@ const commands = {
   linkedin: {
     desc: "open linkedin profile",
     fn: () => {
-      const url = 'https://www.linkedin.com/in/colmquish/';
+      const url = links.linkedin;
       window.open(url, '_blank');
       return `\n  <span class="success">opening linkedin...</span>\n  <a href="${url}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
+    },
+  },
+  strava: {
+    desc: "open strava profile",
+    fn: () => {
+      window.open(links.strava, "_blank");
+      return `\n  <span class="success">opening strava...</span>\n  <a href="${links.strava}" target="_blank" rel="noopener" class="muted">tap here if nothing opened</a>\n`;
     },
   },
   theme: {
@@ -314,18 +334,22 @@ const commands = {
     desc: "copy email or github",
     fn: async (args) => {
       if (!args || args.length === 0) {
-        return '\n  usage: <span class="cmd">copy github</span> or <span class="cmd">copy linkedin</span>\n';
+        return '\n  usage: <span class="cmd">copy github</span>, <span class="cmd">copy linkedin</span>, or <span class="cmd">copy strava</span>\n';
       }
       const what = args[0].toLowerCase();
       if (what === 'github') {
-        await navigator.clipboard.writeText('https://github.com/Quisharoo');
+        await navigator.clipboard.writeText(links.github);
         return '\n  <span class="success">copied github profile url to clipboard</span>\n';
       }
       if (what === 'linkedin') {
-        await navigator.clipboard.writeText('https://www.linkedin.com/in/colmquish/');
+        await navigator.clipboard.writeText(links.linkedin);
         return '\n  <span class="success">copied linkedin profile url to clipboard</span>\n';
       }
-      return '\n  <span class="error">unknown option: ' + what + '</span>\n  try: <span class="cmd">copy github</span> or <span class="cmd">copy linkedin</span>\n';
+      if (what === 'strava') {
+        await navigator.clipboard.writeText(links.strava);
+        return '\n  <span class="success">copied strava profile url to clipboard</span>\n';
+      }
+      return '\n  <span class="error">unknown option: ' + what + '</span>\n  try: <span class="cmd">copy github</span>, <span class="cmd">copy linkedin</span>, or <span class="cmd">copy strava</span>\n';
     },
   },
   projects: {
@@ -350,7 +374,7 @@ const commands = {
       const searchable = [
         { cmd: 'whoami', keywords: ['colm', 'quish', 'engineering manager', 'dublin', 'ai', 'productivity', 'github'] },
         { cmd: 'projects', keywords: ['incremnt', 'scenr', 'npm', 'cli', 'ai coach', 'journal', 'terminal'] },
-        { cmd: 'contact', keywords: ['linkedin', 'github', 'social', 'profile'] },
+        { cmd: 'contact', keywords: ['linkedin', 'github', 'strava', 'social', 'profile', 'running'] },
       ];
       const matches = searchable.filter(s => s.keywords.some(k => k.includes(term) || term.includes(k)));
       if (matches.length === 0) {
