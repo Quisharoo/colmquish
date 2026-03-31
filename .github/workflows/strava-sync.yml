@@ -12,13 +12,14 @@ jobs:
   sync-strava:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Fetch Strava activities
         env:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          BUILD_TIME: ${{ github.run_started_at }}
         run: |
           # Exchange refresh token for access token
           TOKEN_RESPONSE=$(curl -s -X POST https://www.strava.com/oauth/token \
@@ -34,11 +35,11 @@ jobs:
             -H "Authorization: Bearer $ACCESS_TOKEN")
 
           # Build clean JSON for the frontend
-          python3 -c "
-          import json, sys
+          echo "$ACTIVITIES" | python3 -c "
+          import json, sys, os
           activities = json.load(sys.stdin)
           out = {
-              'lastUpdated': '$(date -u +%Y-%m-%dT%H:%M:%SZ)',
+              'lastUpdated': os.environ['BUILD_TIME'],
               'activities': [{
                   'id': a['id'],
                   'name': a['name'],
