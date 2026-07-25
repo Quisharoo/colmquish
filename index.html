@@ -18,15 +18,23 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Colm Quish",
-      "url": "https://colmquish.com/",
-      "sameAs": ["https://github.com/Quisharoo", "https://www.linkedin.com/in/colmquish/"],
-      "worksFor": {
-        "@type": "Organization",
-        "name": "INCREMNT",
-        "url": "https://www.incremnt.app/"
-      }
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://colmquish.com/#colm-quish",
+          "name": "Colm Quish",
+          "url": "https://colmquish.com/",
+          "sameAs": ["https://github.com/Quisharoo", "https://www.linkedin.com/in/colmquish/"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "INCREMNT",
+          "url": "https://www.incremnt.app/",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS, watchOS",
+          "creator": { "@id": "https://colmquish.com/#colm-quish" }
+        }
+      ]
     }
     </script>
 </head>
