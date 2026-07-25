@@ -8,8 +8,8 @@ engineering manager in Dublin.
 - LinkedIn: [colmquish](https://www.linkedin.com/in/colmquish/)
 
 ## projects
-- [incremnt](https://incremnt.app/) - AI coach for training and health
-  - [incremnt cli](https://www.npmjs.com/package/incremnt) - Terminal companion for incremnt
+- [INCREMNT](https://www.incremnt.app/) - strength training app for iPhone and Apple Watch
+  - [INCREMNT CLI](https://www.npmjs.com/package/incremnt) - official terminal companion for INCREMNT
 - [scenr](https://www.scenr.ie/) - Discover what's happening near you
 
 ## contact

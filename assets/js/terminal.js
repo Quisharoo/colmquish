@@ -357,8 +357,8 @@ const commands = {
       return `
   <span class="bold white">projects:</span>
 
-  • <a href="https://incremnt.app/" target="_blank" rel="noopener">incremnt</a> <span class="muted">ai coach for training and health</span>
-    └ <a href="https://www.npmjs.com/package/incremnt" target="_blank" rel="noopener">incremnt cli</a> <span class="muted">terminal companion for the app</span>
+  • <a href="https://www.incremnt.app/" target="_blank" rel="noopener">INCREMNT</a> <span class="muted">strength training app for iPhone and Apple Watch</span>
+    └ <a href="https://www.npmjs.com/package/incremnt" target="_blank" rel="noopener">INCREMNT CLI</a> <span class="muted">official terminal companion for the app</span>
   • <a href="https://www.scenr.ie/" target="_blank" rel="noopener">scenr</a> <span class="muted">Discover what's happening near you</span>
 `;
     },
