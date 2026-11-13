@@ -6,14 +6,17 @@ on:
 
 jobs:
   droid-review:
-    if: github.event.pull_request.draft == false
+    if: >-
+      github.actor == github.repository_owner &&
+      github.event.sender.login == github.repository_owner &&
+      github.event.pull_request.user.login == github.repository_owner &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
       issues: write
-      id-token: write
-      actions: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5

@@ -12,10 +12,12 @@ on:
 
 jobs:
   droid:
-    if: |
-      contains(github.event.comment.body, '@droid') ||
-      contains(github.event.issue.body, '@droid') ||
-      contains(github.event.pull_request.body, '@droid')
+    if: >-
+      github.actor == github.repository_owner &&
+      github.event.sender.login == github.repository_owner &&
+      (contains(github.event.comment.body, '@droid') ||
+       contains(github.event.issue.body, '@droid') ||
+       contains(github.event.pull_request.body, '@droid'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -57,7 +59,7 @@ jobs:
       - name: Install Droid CLI
         run: |
           curl -fsSL https://app.factory.ai/cli | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Configure git
         run: |
@@ -85,7 +87,7 @@ jobs:
           fi
           
           # Extract prompt after @droid
-          PROMPT=$(echo "$TEXT" | sed 's/.*@droid//')
+          PROMPT=${TEXT##*@droid}
 
           # Write prompt file using heredoc (handles multiline safely)
           if [ "$IS_PR" = "true" ]; then
